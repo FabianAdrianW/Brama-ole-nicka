@@ -1,5 +1,10 @@
 # Brama Oleśnicka: DESIGN.md (v7, 12.11.2026)
 
+## v8 (13.11.2026): paleta „Pod lampą”, zdjęcia sali, nowe opinie
+- Paleta „Pod lampą” na stronie głównej: `assets/pod-lampa.css` (po `style.css`). Ciemne tło #13110D, krem #F1E7D4, zieleń #1E3A2B, złoto #D49A3A, akcja w bursztynie #E3A64A (token `--wine`). Podstrony jeszcze w starej palecie. Inne propozycje: `assets/palety.css`.
+- Zdjęcia sali w `img/`: hero (sala.jpg pod szyldem), O nas (stol.jpg w łuku), galeria 6 kafli z lightboxem (`assets/galeria.js`).
+- Opinie: „pas pod lampą” pod hero, na całą szerokość. Ocena 4,4 / 5 z licznikiem, gwiazdki do 88%, 779 opinii w Google, 90% poleca na FB; dwa rzędy cytatów przesuwające się od krawędzi do krawędzi. Bloczki kelnerskie zostają na podstronie Przyjęcia.
+
 ## Cel
 Strona wizytówka restauracji z dwiema podstronami. Konwersje: rezerwacja stolika (główna), zapytanie o przyjęcie (przyjecia.html), zapytanie o catering (catering.html); zawsze też telefon 798 101 270. W v2 przyjęcia i catering były wyłączone, w v7 Fabian je przywrócił jako osobne podstrony.
 

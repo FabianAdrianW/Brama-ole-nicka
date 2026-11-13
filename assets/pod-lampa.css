@@ -1,0 +1,144 @@
+/* Paleta „Pod lampą” (v8, 13.11.2026): ciemna sala wieczorem, bursztyn lamp jako akcja.
+   Wczytywana po style.css, nadpisuje tokeny w obu trybach (jasnym i ciemnym). */
+:root{
+  --paper:#13110D;--sheet:#1C1914;--ink:#F1E7D4;--muted:#B8AB93;
+  --green:#1E3A2B;--on-green:#F1E7D4;
+  --gold:#D49A3A;--gold-text:#E6B867;--gold-on-green:#E6B867;
+  --wine:#E3A64A;--wine-hover:#F0BC6A;--on-wine:#17110A;
+  --line:rgba(241,231,212,.14);
+  --shadow:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
+  --todo-bg:#3D3210;--todo-ink:#F3DC8C;
+  --tint:#E3A64A;--tint-o:.16;
+  color-scheme:dark;
+}
+
+/* ---------- Zdjęcia sali (v8) ---------- */
+/* Hero: zdjęcie sali pod szyldem, zieleń wygasa w prawo */
+.sign__photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 45%;z-index:-3;transform-origin:70% 40%;animation:sign-kb 26s ease-in-out infinite alternate}
+.sign__shade{position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:linear-gradient(90deg,var(--green) 0%,color-mix(in srgb,var(--green) 94%,transparent) 34%,color-mix(in srgb,var(--green) 55%,transparent) 62%,color-mix(in srgb,var(--green) 18%,transparent) 100%),
+             linear-gradient(0deg,color-mix(in srgb,var(--paper) 55%,transparent),transparent 40%)}
+@keyframes sign-kb{from{transform:scale(1.03)}to{transform:scale(1.12) translateX(-1.5%)}}
+.sign .today{background:color-mix(in srgb,var(--green) 78%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media (max-width:calc(980px*.8)){
+  .sign__shade{background:linear-gradient(180deg,color-mix(in srgb,var(--green) 70%,transparent) 0%,var(--green) 45%)}
+  .sign__photo{object-position:50% 30%;height:60%}
+}
+
+/* O nas: zdjęcie stołu w łuku bramy */
+@media (min-width:calc(980px*.8)){.about{grid-template-columns:1.05fr .95fr;align-items:center}}
+.about__photo{position:relative;margin:0;padding:0;border:0;background:none;display:block;overflow:visible}
+.about__photo .ph{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
+.about__photo img{width:100%;height:118%;object-fit:cover;will-change:transform}
+.about__photo::before{content:"";position:absolute;inset:-1rem 1rem 1rem -1rem;border:1.4px solid var(--gold);border-radius:inherit;z-index:-1;transition:inset .7s var(--ease)}
+@media (hover:hover){.about__photo:hover::before{inset:-.5rem .5rem .5rem -.5rem}}
+.about__photo figcaption{position:absolute;right:-.5rem;bottom:1.5rem;background:var(--sheet);color:var(--muted);font:600 .7rem var(--f-sans);letter-spacing:.18em;text-transform:uppercase;padding:.6rem .9rem;border-left:2px solid var(--gold)}
+
+/* Galeria: zdjęcia zamiast ramek */
+.gal__ph{cursor:zoom-in;text-decoration:none}
+.gal__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease),filter .6s}
+.gal__ph::before{background:var(--tint);opacity:var(--tint-o);mix-blend-mode:soft-light;z-index:1;transition:opacity .6s}
+.gal__ph::after{z-index:2;border-color:color-mix(in srgb,var(--gold) 0%,transparent);inset:1.2rem;transition:inset .6s var(--ease),border-color .5s}
+.gal__ph:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
+@media (hover:hover){
+  .gal__it:hover .gal__ph::before{transform:none;opacity:0}
+  .gal__it:hover .gal__ph::after{inset:.7rem;border-color:var(--gold)}
+  .gal__it:hover .gal__ph img{transform:scale(1.07)}
+}
+.photo-tint{position:relative}
+.photo-tint::after{content:"";position:absolute;inset:0;background:var(--tint);opacity:var(--tint-o);mix-blend-mode:soft-light;pointer-events:none}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:4vmin;background:rgba(10,9,7,.9);opacity:0;visibility:hidden;transition:opacity .35s,visibility 0s .35s}
+.lb.is-open{opacity:1;visibility:visible;transition:opacity .35s}
+.lb img{max-width:100%;max-height:82vh;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:scale(.96);transition:transform .5s var(--ease)}
+.lb.is-open img{transform:none}
+.lb p{color:var(--ink);font:600 .75rem var(--f-sans);letter-spacing:.2em;text-transform:uppercase;margin-top:1rem;text-align:center}
+.lb button{position:absolute;width:3rem;height:3rem;border-radius:50%;border:1px solid var(--line);background:var(--sheet);color:var(--ink);font-size:1.4rem;cursor:pointer;display:grid;place-items:center;transition:background .3s,color .3s}
+.lb button:hover{background:var(--wine);color:var(--on-wine)}
+.lb__x{top:1.25rem;right:1.25rem}.lb__p{left:1.25rem;top:50%}.lb__n{right:1.25rem;top:50%}
+@media (prefers-reduced-motion:reduce){.sign__photo{animation:none}.gal__ph img,.lb,.lb img{transition:none}}
+
+/* Logo na ciemnym tle */
+.gate__frame,.gate__ground{stroke:var(--gold)}
+
+/* ---------- Opinie: pas pod lampą (v8) ----------
+   Pełna szerokość ekranu, wjeżdża pod kartę z adresem w hero.
+   Lewa część: ocena; pod nią i obok przesuwają się cytaty. */
+.proof{--side:max(1.25rem,calc((100vw - var(--wrap))/2));--mx:30%;--my:50%;
+  position:relative;z-index:1;isolation:isolate;overflow:hidden;
+  margin-top:-4.5rem;padding:9rem 0 5.5rem;
+  background:
+    linear-gradient(var(--paper) 0 4.5rem,transparent 4.5rem),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='18'%3E%3Cpath d='M0 18a16 16 0 0 1 32 0M-16 9a16 16 0 0 1 32 0M16 9a16 16 0 0 1 32 0' fill='none' stroke='%23E6B867' stroke-opacity='.07' stroke-width='1'/%3E%3C/svg%3E"),
+    linear-gradient(180deg,var(--paper),var(--sheet) 30%,var(--sheet) 70%,var(--paper));
+  background-origin:border-box;
+}
+.proof::before,.proof::after{content:"";position:absolute;left:0;right:0;height:1px;z-index:3;
+  background:linear-gradient(90deg,transparent,var(--gold) 15%,var(--gold) 85%,transparent);opacity:.55}
+.proof::before{top:4.5rem}.proof::after{bottom:0}
+.proof__glow{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(38rem 26rem at var(--mx) var(--my),color-mix(in srgb,var(--wine) 22%,transparent),transparent 70%);transition:background .2s}
+
+.proof__rows{display:grid;gap:1.25rem;padding-left:calc(var(--side) + 27rem)}
+.qrow{overflow:visible;-webkit-mask:linear-gradient(90deg,transparent,#000 6rem);mask:linear-gradient(90deg,transparent,#000 6rem)}
+.qrow__track{list-style:none;margin:0;padding:0;display:flex;gap:1.25rem;width:max-content;animation:qmove 70s linear infinite}
+.qrow--b .qrow__track{animation-duration:84s;animation-direction:reverse;margin-left:-12rem}
+.proof__rows:hover .qrow__track{animation-play-state:paused}
+@keyframes qmove{to{transform:translateX(calc(-50% - .625rem))}}
+
+.q figure{margin:0;width:25rem;min-height:100%;padding:1.6rem 1.8rem 1.4rem;position:relative;
+  background:color-mix(in srgb,var(--paper) 70%,transparent);border:1px solid var(--line);
+  display:flex;flex-direction:column;gap:.8rem;transition:border-color .4s,background-color .4s,transform .5s var(--ease),box-shadow .5s}
+.q figure::before{content:"„";position:absolute;right:1.1rem;top:-.6rem;font:italic 600 5.5rem/1 var(--f-serif);color:var(--gold);opacity:.18;transition:opacity .4s,transform .5s var(--ease)}
+.q__stars{display:flex;gap:.15rem;color:var(--gold)}
+.q__stars svg{width:.85rem;height:.85rem}
+.q blockquote{margin:0;font:italic 400 1.22rem/1.5 var(--f-serif);color:var(--ink);flex:1}
+.q figcaption{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;border-top:1px solid var(--line);padding-top:.75rem}
+.q figcaption b{font:500 1.05rem var(--f-serif)}
+.q figcaption span{font:600 .62rem var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+@media (hover:hover){
+  .q:hover figure{border-color:color-mix(in srgb,var(--gold) 70%,transparent);background:color-mix(in srgb,var(--sheet) 92%,var(--gold));transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(0,0,0,.7)}
+  .q:hover figure::before{opacity:.45;transform:translateY(.3rem)}
+}
+
+/* Ocena */
+.proof__score{position:absolute;z-index:2;top:4.5rem;bottom:0;left:0;width:calc(var(--side) + 30rem);
+  padding:0 5rem 0 var(--side);display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--sheet) 93%,transparent) 0,color-mix(in srgb,var(--sheet) 96%,transparent) calc(100% - 4.5rem),transparent)}
+.proof__score .caps{margin:0;font-size:.8rem;color:var(--gold-text)}
+.proof__num{margin:.4rem 0 0;display:flex;align-items:baseline;gap:.8rem;line-height:.9}
+.proof__num span{font:500 clamp(7rem,5rem + 7vw,11.5rem)/.9 var(--f-serif);letter-spacing:-.03em;
+  background:linear-gradient(180deg,#F6D9A0 0%,var(--gold) 55%,#9C6A22 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:lining-nums tabular-nums}
+.proof__num small{font:600 1.1rem var(--f-sans);letter-spacing:.14em;color:var(--muted)}
+.proof__stars{position:relative;display:inline-block;align-self:flex-start;margin:1rem 0 1.1rem;line-height:0}
+.proof__stars span{display:flex;gap:.35rem}
+.proof__stars svg{width:1.7rem;height:1.7rem;flex:none}
+.proof__stars-bg{color:color-mix(in srgb,var(--gold) 22%,transparent)}
+.proof__stars-fg{position:absolute;inset:0;color:var(--gold);clip-path:inset(0 calc(100% - var(--fill)) 0 0);transition:clip-path 1.6s var(--ease) .3s}
+.proof:not(.is-in) .proof__stars-fg{clip-path:inset(0 100% 0 0)}
+.proof__meta{margin:0;font:400 1.05rem var(--f-sans);color:var(--muted);display:flex;flex-direction:column;gap:.35rem}
+.proof__meta span{display:flex;align-items:baseline;gap:.6rem}
+.proof__meta b{min-width:3.6rem}
+.proof__meta b{font:500 1.6rem var(--f-serif);color:var(--ink);font-variant-numeric:tabular-nums}
+.proof__links{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.75rem;margin-top:1.75rem}
+.proof__links .more{margin:0}
+.proof__links .btn svg{width:1rem;height:1rem}
+
+@media (max-width:calc(1100px*.8)){
+  .proof{padding:7.5rem 0 3.5rem;display:flex;flex-direction:column}
+  .proof__score{order:-1}
+  .proof::before{top:4.5rem}
+  .proof__score{position:relative;top:auto;width:auto;padding:0 var(--side) 2.5rem;background:none}
+  .proof__rows{padding-left:0}
+  .qrow--b{display:none}
+  .q figure{width:min(82vw,22rem)}
+  .qrow{-webkit-mask:none;mask:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .qrow{overflow-x:auto;-webkit-mask:none;mask:none}
+  .qrow__track{animation:none}
+  .q[aria-hidden="true"]{display:none}
+  .proof__stars-fg{transition:none}
+  .proof:not(.is-in) .proof__stars-fg{clip-path:inset(0 calc(100% - var(--fill)) 0 0)}
+}

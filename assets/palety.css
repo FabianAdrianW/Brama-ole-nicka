@@ -1,0 +1,81 @@
+/* Brama Oleśnicka: palety kolorów (przełączane atrybutem data-palette na <html>)
+   Tokeny:
+   --paper   tło strony            --sheet   karty, arkusze
+   --ink     tekst                 --muted   opisy
+   --panel   szyld, pasy, stopka   --on-panel tekst na panelu
+   --accent  ornamenty, linie      --accent-text drobne napisy w akcencie na tle
+   --accent-on-panel akcent na panelu
+   --cta     przycisk/akcja        --on-cta  tekst na przycisku
+   --line    separatory            --tint    nałożenie na zdjęcia (soft-light)
+*/
+
+/* 1. Plakat: obecna paleta z plakatu Brama Smaków */
+[data-palette="plakat"] {
+  color-scheme: light;
+  --paper:#F3EBDC; --sheet:#FBF6EC; --ink:#1F2A22; --muted:#5B5446;
+  --panel:#1F4A33; --on-panel:#F3EBDC;
+  --accent:#B08A3E; --accent-text:#82632A; --accent-on-panel:#D9BE7E;
+  --cta:#7D1B24; --on-cta:#FFFFFF;
+  --line:rgba(31,42,34,.14); --tint:transparent; --tint-o:0;
+}
+
+/* 2. Pod lampą (WYBRANA, domyślna od 13.11.2026): wieczór na sali, ciemne tło i bursztynowe światło perforowanych lamp */
+:root, [data-palette="lampa"] {
+  color-scheme: dark;
+  --paper:#13110D; --sheet:#1C1914; --ink:#F1E7D4; --muted:#B8AB93;
+  --panel:#1E3A2B; --on-panel:#F1E7D4;
+  --accent:#D49A3A; --accent-text:#E6B867; --accent-on-panel:#E6B867;
+  --cta:#E3A64A; --on-cta:#17110A;
+  --line:rgba(241,231,212,.12); --tint:#E3A64A; --tint-o:.18;
+}
+
+/* 3. Dąb i butelka: lamele z dębu, butelkowa zieleń kolumny, miedź obrusów jako akcja */
+[data-palette="dab"] {
+  color-scheme: light;
+  --paper:#EDE2D0; --sheet:#F7F0E4; --ink:#1A2A20; --muted:#594F41;
+  --panel:#173A2A; --on-panel:#F2E9D8;
+  --accent:#A8743F; --accent-text:#7F5328; --accent-on-panel:#DDB27C;
+  --cta:#9E4E27; --on-cta:#FFFFFF;
+  --line:rgba(26,42,32,.15); --tint:#C08A4E; --tint-o:.12;
+}
+
+/* 4. Miedziany obrus: satynowe obrusy, kremowa skóra krzeseł, espresso zamiast zieleni */
+[data-palette="miedz"] {
+  color-scheme: light;
+  --paper:#F3E7DA; --sheet:#FBF4EC; --ink:#241B16; --muted:#5E4F44;
+  --panel:#2B221C; --on-panel:#F3E7DA;
+  --accent:#C07A43; --accent-text:#93552A; --accent-on-panel:#E6AA78;
+  --cta:#2F5A3B; --on-cta:#FFFFFF;
+  --line:rgba(36,27,22,.14); --tint:#D08A55; --tint-o:.14;
+}
+
+/* 5. Zielona ściana: ciemna zieleń ogrodu wertykalnego, złoto i kremowa skóra */
+[data-palette="zielen"] {
+  color-scheme: dark;
+  --paper:#0E1913; --sheet:#14231A; --ink:#ECE4D0; --muted:#A8B29E;
+  --panel:#1B3828; --on-panel:#ECE4D0;
+  --accent:#C9A45C; --accent-text:#DABF80; --accent-on-panel:#DABF80;
+  --cta:#DABF80; --on-cta:#13201A;
+  --line:rgba(236,228,208,.12); --tint:#7FAE6A; --tint-o:.12;
+}
+
+/* 6. Nocny bar: grafit, błękit LED-ów za lustrami, bursztyn lamp jako akcja */
+[data-palette="noc"] {
+  color-scheme: dark;
+  --paper:#101215; --sheet:#171A1F; --ink:#E9E6E0; --muted:#A3A7AE;
+  --panel:#1A2530; --on-panel:#E9E6E0;
+  --accent:#6FB6D3; --accent-text:#8CC6DE; --accent-on-panel:#8CC6DE;
+  --cta:#E0A247; --on-cta:#15100A;
+  --line:rgba(233,230,224,.12); --tint:#4F9FC4; --tint-o:.14;
+}
+
+/* Zgodność z tokenami z DESIGN.md v7 (assets/style.css).
+   Wczytaj palety.css PO style.css. Usuń przy tym blok prefers-color-scheme: dark,
+   bo palety 2, 5 i 6 są już ciemne. */
+:root, [data-palette] {
+  --green: var(--panel);
+  --gold: var(--accent);
+  --gold-text: var(--accent-text);
+  --gold-on-green: var(--accent-on-panel);
+  --wine: var(--cta);
+}
