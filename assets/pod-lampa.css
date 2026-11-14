@@ -161,3 +161,86 @@ html::-webkit-scrollbar-corner{background:var(--sb-track)}
   html{scrollbar-color:#B88634 var(--sb-track);scrollbar-width:thin}
 }
 ::selection{background:rgba(227,166,74,.85);color:#17110A}
+
+/* ---------- Karta na głównej: zapowiedź (v8) ----------
+   Pełna karta jest w menu.html. Tu 6 dań, skróty do działów i przycisk. */
+#menu.picks{padding-bottom:clamp(3rem,2rem + 3vw,5rem)}
+.picks__in{display:grid;gap:2.5rem;align-items:start}
+.picks__in>*{min-width:0}
+@media (min-width:900px){.picks__in{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(3rem,5vw,6rem);align-items:center}}
+.picks__intro .caps{color:var(--gold-text)}
+.picks__intro h2{font-size:clamp(2.6rem,1.8rem + 3vw,4.4rem);font-weight:500;margin:.6rem 0 1rem;line-height:1.02}
+.picks__intro h2 i{color:var(--gold-text)}
+.picks__lead{color:var(--muted);font-size:1.12rem;max-width:30rem}
+.picks__gratis{display:inline-flex;gap:.6rem;align-items:center;margin:1.25rem 0 1.75rem;padding:.55rem 1rem .55rem .8rem;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:999px;font-size:1rem}
+.picks__gratis svg{width:1.3rem;height:1.3rem;color:var(--gold)}
+.picks__gratis b{color:var(--gold-text);font-weight:600}
+.picks__all{display:inline-flex;align-items:center;gap:.75rem}
+.picks__all small{font:600 .66rem var(--f-sans);letter-spacing:.12em;opacity:.7;padding-left:.75rem;border-left:1px solid currentColor}
+.picks__all svg{width:1rem;height:1rem;transition:transform .35s var(--ease)}
+.picks__all:hover svg{transform:translateX(4px)}
+.picks__cats{margin-top:2.25rem}
+.picks__cats .caps{font-size:.68rem;color:var(--muted);margin:0 0 .75rem}
+.picks__cats ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.picks__cats a{display:block;padding:.5rem .85rem;min-height:40px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font:600 .7rem/1.6 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;transition:border-color .3s,color .3s,background-color .3s}
+.picks__cats a:hover{border-color:var(--gold);color:var(--gold-text);background:color-mix(in srgb,var(--gold) 8%,transparent)}
+
+.picks__card .card__title{margin-bottom:1.5rem}
+.picks__list{list-style:none;margin:0;padding:0;counter-reset:pk}
+.picks__list li{border-bottom:1px solid var(--line)}
+.picks__list li:last-child{border-bottom:0}
+.pk{display:block;padding:1.05rem .35rem;text-decoration:none;color:inherit;position:relative;transition:background-color .35s}
+.pk__top{display:flex;align-items:baseline;gap:.7rem}
+.pk__n{font:500 clamp(1.2rem,1.05rem + .5vw,1.45rem)/1.25 var(--f-serif);color:var(--ink);transition:color .3s}
+.pk__dots{flex:1;min-width:1rem;border-bottom:1px dotted color-mix(in srgb,var(--ink) 25%,transparent);transform:translateY(-.3rem);transition:border-color .3s}
+.pk__p{font:700 1.1rem var(--f-sans);color:var(--gold-text);white-space:nowrap}
+.pk__p small{font-size:.72rem;color:var(--muted);font-weight:600}
+.pk__d{display:block;margin-top:.25rem;font:400 .95rem/1.5 var(--f-sans);color:var(--muted)}
+.pk__q{margin:.6rem 0 0;padding-left:.85rem;border-left:2px solid var(--gold);font:italic 400 1rem/1.45 var(--f-serif);color:color-mix(in srgb,var(--ink) 85%,transparent)}
+.pk__q cite{display:block;margin-top:.2rem;font:600 .62rem var(--f-sans);letter-spacing:.16em;text-transform:uppercase;font-style:normal;color:var(--muted)}
+@media (hover:hover){
+  .pk:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+  .pk:hover .pk__n{color:var(--gold-text)}
+  .pk:hover .pk__dots{border-bottom-color:var(--gold)}
+}
+.pk:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
+@media (max-width:600px){
+  .picks__card{padding-inline:1.1rem}
+  .picks__all{width:100%;justify-content:center}
+  .picks__cats ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-1.25rem;padding-inline:1.25rem}
+  .picks__cats ul::-webkit-scrollbar{display:none}
+  .picks__cats li{flex:none}
+}
+
+/* ---------- Hero na telefonie (v8) ----------
+   Zdjęcie sali na górze bez zielonej zasłony, krótszy tekst,
+   jeden główny przycisk, „Codziennie w karcie” jako pasek. */
+@media (max-width:600px){
+  .hero .sign{padding-top:calc(66vw + .5rem);padding-bottom:4.5rem}
+  .hero .sign__photo{height:72vw;object-position:46% 50%;animation-duration:30s}
+  .hero .sign__shade{background:linear-gradient(180deg,rgba(0,0,0,.08) 0,transparent 22vw,color-mix(in srgb,var(--green) 55%,transparent) 50vw,var(--green) 71vw)}
+  .hero .sign__frame{display:none}
+  .nav .icon-btn{flex:none}
+  .hero .sign__arch{display:none}
+  .hero .sign .caps{font-size:.72rem;letter-spacing:.2em}
+  .hero .sign h1{font-size:3.4rem;margin:.55rem 0 .7rem}
+  .hero .sign__who{display:none}
+  .hero .sign__lead{font-size:1.08rem;line-height:1.55}
+  .hero .sign__actions{margin-top:1.5rem;flex-direction:column;align-items:stretch;gap:.35rem}
+  .hero .sign__actions .btn{width:100%;justify-content:center}
+  .hero .sign__menu{background:none!important;border-color:transparent!important;color:var(--gold-on-green)!important;min-height:44px}
+  .hero .sign__menu::before{display:none}
+  .hero .sign__menu::after{content:"→";margin-left:.5rem;transition:transform .3s var(--ease)}
+  .hero .sign__grid{gap:1.5rem}
+  .hero .today{display:flex;flex-wrap:wrap;gap:.45rem;padding:0;border:0;border-radius:0;background:none!important;transform:none!important;max-width:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .hero .today>.caps,.hero .today>p{display:none}
+  .hero .today__row{flex:none;gap:.5rem;padding:.45rem .8rem;border:1px solid rgba(230,184,103,.4)!important;border-radius:999px;background:rgba(0,0,0,.18)}
+  .hero .today__row span{font-size:.92rem}
+  .hero .today__row b{font-size:.85rem}
+  .hero .info{margin-top:-2.5rem}
+  .hero .info a[href^="tel:"]{display:none}
+  .hero .info>*{padding:1rem 1.25rem}
+  .hero .info strong{font-size:1.05rem}
+  .nb{white-space:nowrap}
+}
+@media (max-width:380px){.nav__in{gap:.6rem}.logo{gap:.5rem}.logo b{font-size:1.12rem}.logo svg.gate{width:2.4rem;height:2.4rem}}
