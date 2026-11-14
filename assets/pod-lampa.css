@@ -1,7 +1,7 @@
 /* Paleta „Pod lampą” (v8, 13.11.2026): ciemna sala wieczorem, bursztyn lamp jako akcja.
    Wczytywana po style.css, nadpisuje tokeny w obu trybach (jasnym i ciemnym). */
 :root{
-  --paper:#13110D;--sheet:#1C1914;--ink:#F1E7D4;--muted:#B8AB93;
+  --paper:#2E241B;--sheet:#382C21;--ink:#F1E7D4;--muted:#C9BCA2;
   --green:#1E3A2B;--on-green:#F1E7D4;
   --gold:#D49A3A;--gold-text:#E6B867;--gold-on-green:#E6B867;
   --wine:#E3A64A;--wine-hover:#F0BC6A;--on-wine:#17110A;
@@ -244,3 +244,26 @@ html::-webkit-scrollbar-corner{background:var(--sb-track)}
   .nb{white-space:nowrap}
 }
 @media (max-width:380px){.nav__in{gap:.6rem}.logo{gap:.5rem}.logo b{font-size:1.12rem}.logo svg.gate{width:2.4rem;height:2.4rem}}
+
+/* ---------- Rytm + Orzech + Łuk bramy (v10, 14.11.2026) ----------
+   Ciemne sekcje: orzech #2E241B (zamiast prawie-czerni). Wybrane sekcje są
+   jasne (.is-light): kremowy papier, przyciski i ornamenty w ciemnym brązie,
+   bo bursztyn na kremie miał kontrast 1,8:1. Sekcja, której tło różni się
+   od poprzedniej, ma klasę .cut: zaczyna się płaskim łukiem bramy ze złotą nitką. */
+:where(.sec,.proof){background-color:var(--paper)}
+.is-light{
+  --paper:#EFE6D6;--sheet:#F7F1E6;--ink:#2A2119;--muted:#5E5343;
+  --gold:#9A6420;--gold-text:#8C5A1C;--line:rgba(42,33,25,.15);
+  --wine:#8C5A1C;--wine-hover:#74490F;--on-wine:#FFF8EC;
+  --shadow:0 2px 6px rgba(60,40,10,.08),0 18px 40px rgba(60,40,10,.12);
+  --todo-bg:#F6E7A8;--todo-ink:#4A3A06;
+  color-scheme:light;background-color:var(--paper);color:var(--ink);
+}
+.is-light.is-sheet{background-color:var(--sheet)}
+:root{--arch:clamp(2.25rem,1rem + 4.5vw,5.5rem)}
+.cut{position:relative;z-index:3;margin-top:calc(-1 * var(--arch));
+  border-radius:50% 50% 0 0/var(--arch) var(--arch) 0 0;
+  box-shadow:inset 0 1.5px 0 0 color-mix(in srgb,#D49A3A 60%,transparent)}
+.cut.is-light{box-shadow:inset 0 1.5px 0 0 color-mix(in srgb,#9A6420 55%,transparent)}
+.cut:is(.season,.res)::before{display:none}
+.res.cut{border-top:0}

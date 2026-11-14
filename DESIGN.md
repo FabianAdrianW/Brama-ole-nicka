@@ -77,3 +77,11 @@ Pełne dane z cenami są w `menu.html`. Do potwierdzenia: aktualność cen, lege
 
 ## Do uzupełnienia przez firmę
 Link „Poproś o opinie” z Profilu Firmy w Google, więcej cytatów z opinii, zdjęcia dań, wejścia i fasady, dane do „Co warto wiedzieć” przy przyjęciach, lista dań garmażeryjnych i dostawa, asortyment sklepiku, catering na spotkania, psy w lokalu, godziny otwarcia, płatność kartą, parking i znak wejścia, nazwa firmy i NIP, polityka prywatności, og:image (kandydat: sala.jpg), decyzja o logo, fonty lokalnie przed wdrożeniem, zgoda na użycie zdjęć wnętrza.
+
+## v10 (14.11.2026): Orzech, Rytm, Łuk bramy
+
+- Ciemne sekcje: orzech `--paper:#2E241B`, `--sheet:#382C21`, `--muted:#C9BCA2` (było prawie czarne `#13110D`). theme-color `#2E241B`.
+- Rytm: jasne sekcje `.is-light` (krem `#EFE6D6`, arkusz `#F7F1E6`). Strona główna: karta, okazje, FAQ. Przyjęcia: okazje, „Co warto wiedzieć”. Catering: oferta, kalendarz.
+- Kontrast na jasnym: przyciski i ornamenty w brązie `#8C5A1C` / `#9A6420` (bursztyn na kremie miał 1,8:1, teraz 5,5:1 dla tekstu przycisku). Tekst ≥ 4,5:1 wszędzie.
+- Przejścia: `.cut` = sekcja, której tło różni się od poprzedniej. Zaczyna się płaskim łukiem (`--arch`, 36–88 px) ze złotą nitką (inset box-shadow) i nachodzi na poprzednią sekcję. `.cut` ma `z-index:3`. Stary `.season::before` i obramowanie `.res` są wyłączone na `.cut`.
+- Nowa sekcja: dodaj `cut` tylko gdy jej tło różni się od poprzedniej.
