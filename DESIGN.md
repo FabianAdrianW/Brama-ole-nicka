@@ -95,3 +95,10 @@ Zasada: jedna rodzina barw (brąz) + jeden metal (złoto). Bez trzeciego koloru 
 - Zdjęcia: ciepła korekta `sepia(.22) saturate(.78) contrast(1.04) brightness(.97)`, przygasza zieleń roślin i niebieskie LED-y.
 - Bloczek zamówienia: zielony/granatowy/czerwony „atrament” zamieniony na brąz; czerwień zostaje tylko w komunikatach błędów.
 - Wszystkie pary tekst/tło ≥ 4,5:1, ornamenty ≥ 3:1. theme-color `#17120E`.
+
+## v12 (14.11.2026): opinie i formularze bez bloczków
+
+- Usunięte z podstron: mosiężny drążek i karteczki (`.rail`, `.slip`). Style zostały w style.css, ale nie są używane.
+- Opinie na Przyjęciach: `.gr` (3 karty w rzędzie, na telefonie jedna pod drugą). Złoty cudzysłów, cytat kursywą, podpis + okazja i źródło. Najazd: karta unosi się 4 px, złota linia u góry rozciąga się na całą szerokość. Nad kartami ocena 4,4 z Google.
+- Formularze na Przyjęciach i Cateringu: `.qf.is-light` (jasna karta, pola w ramkach, widoczne etykiety, `*` tylko przy telefonie, „(opcjonalnie)” przy uwagach). Obok `.qsteps`: 3 kroki „Wypełnij → Wyślij gotowy e-mail → Czekaj na telefon”. Przycisk „Przygotuj e-mail” + dopisek, że nic nie wysyła się bez użytkownika.
+- Identyfikatory pól i `data-label` bez zmian, więc main.js działa jak wcześniej.

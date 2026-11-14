@@ -165,31 +165,28 @@
       <h2 id="form-h">Zamów albo zapytaj o ofertę</h2>
       <p class="sub-lead">Najszybciej przez telefon:</p>
       <a class="phone" href="tel:+48798101270">798 101 270</a>
-      <p class="sub-lead">albo wypisz bloczek obok. Oddzwonimy z ofertą.</p>
+      <p class="sub-lead">albo wypełnij formularz:</p>
+      <ol class="qsteps">
+        <li><b>Wypełnij formularz</b><span>Wymagany jest tylko telefon, resztę możemy ustalić w&nbsp;rozmowie.</span></li>
+        <li><b>Wyślij gotowy e-mail</b><span>Otworzy się Twoja poczta z&nbsp;wypełnioną wiadomością. Kliknij „Wyślij”.</span></li>
+        <li><b>Czekaj na telefon</b><span>Oddzwonimy z&nbsp;ofertą i&nbsp;ustalimy szczegóły.</span></li>
+      </ol>
     </div>
-    <div class="pass pass--form">
-      <div class="rail" aria-hidden="true"><span class="rail__cap rail__cap--l"><i></i><i></i></span><span class="rail__bar"></span><span class="rail__cap rail__cap--r"><i></i><i></i></span></div>
-      <div class="slips slips--one">
-        <div class="hang" style="--r:-.6deg"><span class="ball" aria-hidden="true"></span><div class="hang__shadow">
-        <form class="slip slip--form" id="form-c" novalidate data-mail="Catering" data-intro="chcę zapytać o catering." aria-label="Zamówienie cateringu">
-          <svg class="slip__wm" aria-hidden="true"><use href="#gate-mini"/></svg>
-          <header class="slip__head"><svg class="slip__logo" aria-hidden="true"><use href="#gate-mini"/></svg><span class="slip__brand">Brama Oleśnicka<small>Lwowska 31, Oleśnica</small></span><span class="slip__no"><small>Nº</small>nowe</span></header>
-          <p class="slip__title">Zamówienie cateringu</p>
-          <div class="sf sf--wide"><label for="c-type">Czego dotyczy</label><select id="c-type" data-label="Rodzaj" data-subject-from><option>Catering dla przedszkola</option><option>Zamówienie świąteczne</option><option>Garmażerka na wynos</option><option>Sklepik Brama Smaków</option><option>Inne zamówienie</option></select></div>
-          <div class="sf"><label for="c-date">Na kiedy</label><input id="c-date" type="date" data-label="Termin"></div>
-          <div class="sf"><label for="c-n">Ile porcji / osób</label><input id="c-n" type="number" inputmode="numeric" min="1" placeholder="np. 40" data-label="Porcje / osoby"></div>
-          <div class="sf"><label for="c-name">Imię lub placówka</label><input id="c-name" autocomplete="organization" data-label="Imię / placówka"></div>
-          <div class="sf"><label for="c-tel">Telefon</label><input id="c-tel" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="c-tel-err" data-label="Telefon"><span class="err" id="c-tel-err">Wpisz numer, oddzwonimy z ofertą.</span></div>
-          <div class="sf sf--wide"><label for="c-msg">Szczegóły</label><textarea id="c-msg" rows="2" placeholder="np. dania, diety, dostawa" data-label="Szczegóły"></textarea></div>
-
-          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="slip__send"><button class="btn" type="submit">Wyślij zapytanie</button><p class="note">Formularz otworzy gotowy e-mail w Twoim programie pocztowym.</p></div>
-          <p class="ok" role="status">E-mail z zapytaniem jest gotowy do wysłania. Jeśli program pocztowy się nie otworzył, zadzwoń: 798 101 270.</p>
-          <div class="slip__stub"><span>Odpowiadamy telefonicznie</span><span>798 101 270</span></div>
-        </form>
-        </div></div>
+    <form class="qf is-light" id="form-c" novalidate data-mail="Catering" data-intro="chcę zapytać o catering." aria-labelledby="form-c-t">
+      <div class="qf__top"><h3 class="qf__t" id="form-c-t">Zapytanie o catering</h3><p class="qf__req"><em>*</em> pole wymagane</p></div>
+      <div class="qf__grid">
+          <div class="qf__f qf__f--wide"><label for="c-type">Czego dotyczy</label><div class="qf__sel"><select id="c-type" data-label="Rodzaj" data-subject-from><option>Catering dla przedszkola</option><option>Zamówienie świąteczne</option><option>Garmażerka na wynos</option><option>Sklepik Brama Smaków</option><option>Inne zamówienie</option></select></div></div>
+          <div class="qf__f"><label for="c-date">Na kiedy</label><input id="c-date" type="date" data-label="Termin"></div>
+          <div class="qf__f"><label for="c-n">Ile porcji lub osób</label><input id="c-n" type="number" inputmode="numeric" min="1" placeholder="np. 40" data-label="Porcje / osoby"></div>
+          <div class="qf__f"><label for="c-name">Imię lub placówka</label><input id="c-name" autocomplete="organization" placeholder="np. Przedszkole nr 3" data-label="Imię / placówka"></div>
+          <div class="qf__f"><label for="c-tel">Telefon <em>*</em></label><input id="c-tel" type="tel" inputmode="tel" autocomplete="tel" required placeholder="np. 600 100 200" aria-describedby="c-tel-err" data-label="Telefon"><span class="err" id="c-tel-err">Wpisz numer telefonu, żebyśmy mogli oddzwonić z ofertą.</span></div>
+          <div class="qf__f qf__f--wide"><label for="c-msg">Szczegóły <small>(opcjonalnie)</small></label><textarea id="c-msg" rows="3" placeholder="np. dania, diety, dostawa" data-label="Szczegóły"></textarea></div>
       </div>
-    </div>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn qf__btn" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Przygotuj e-mail</button>
+      <p class="note qf__note">Nic nie wysyłamy bez Ciebie. Formularz tylko przygotuje wiadomość w&nbsp;Twojej poczcie.</p>
+      <p class="ok" role="status">Gotowe. Sprawdź okno poczty i&nbsp;kliknij „Wyślij”. Jeśli poczta się nie otworzyła, zadzwoń: <a href="tel:+48798101270">798 101 270</a>.</p>
+    </form>
   </div>
 </section>
 </main>
