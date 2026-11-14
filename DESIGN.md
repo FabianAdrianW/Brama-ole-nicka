@@ -81,7 +81,17 @@ Link „Poproś o opinie” z Profilu Firmy w Google, więcej cytatów z opinii,
 ## v10 (14.11.2026): Orzech, Rytm, Łuk bramy
 
 - Ciemne sekcje: orzech `--paper:#2E241B`, `--sheet:#382C21`, `--muted:#C9BCA2` (było prawie czarne `#13110D`). theme-color `#2E241B`.
-- Rytm: jasne sekcje `.is-light` (krem `#EFE6D6`, arkusz `#F7F1E6`). Strona główna: karta, okazje, FAQ. Przyjęcia: okazje, „Co warto wiedzieć”. Catering: oferta, kalendarz.
+- Rytm: jasne sekcje `.is-light` (krem, od v11 `#F6F2EB` / `#FAF8F4`). Strona główna: karta, okazje, FAQ. Przyjęcia: okazje, „Co warto wiedzieć”. Catering: oferta, kalendarz.
 - Kontrast na jasnym: przyciski i ornamenty w brązie `#8C5A1C` / `#9A6420` (bursztyn na kremie miał 1,8:1, teraz 5,5:1 dla tekstu przycisku). Tekst ≥ 4,5:1 wszędzie.
 - Przejścia: `.cut` = sekcja, której tło różni się od poprzedniej. Zaczyna się płaskim łukiem (`--arch`, 36–88 px) ze złotą nitką (inset box-shadow) i nachodzi na poprzednią sekcję. `.cut` ma `z-index:3`. Stary `.season::before` i obramowanie `.res` są wyłączone na `.cut`.
 - Nowa sekcja: dodaj `cut` tylko gdy jej tło różni się od poprzedniej.
+
+## v11 (14.11.2026): Heban i jasne złoto
+
+Zasada: jedna rodzina barw (brąz) + jeden metal (złoto). Bez trzeciego koloru powierzchni.
+- Ciemne: `--paper:#17120E`, `--sheet`/`--green:#241F1B` (dawna zieleń to teraz ton jaśniejszy heban), tekst `#EDE9E2`, pomocniczy `#AFAAA4`.
+- Złoto `#DDBB78` (hover `#E3C995`): przyciski na ciemnym, linie, ornamenty. Tekst na przycisku `#17120E`.
+- Jasne `.is-light`: `#F6F2EB` / `#FAF8F4`, tekst `#16110D`, pomocniczy `#625D58`. Przyciski ciemne (`#17120E` z jasnym tekstem), złoto do tekstu `#7E6A45`, ornamenty `#9A8254`.
+- Zdjęcia: ciepła korekta `sepia(.22) saturate(.78) contrast(1.04) brightness(.97)`, przygasza zieleń roślin i niebieskie LED-y.
+- Bloczek zamówienia: zielony/granatowy/czerwony „atrament” zamieniony na brąz; czerwień zostaje tylko w komunikatach błędów.
+- Wszystkie pary tekst/tło ≥ 4,5:1, ornamenty ≥ 3:1. theme-color `#17120E`.

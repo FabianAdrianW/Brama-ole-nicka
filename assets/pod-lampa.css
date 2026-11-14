@@ -1,14 +1,15 @@
 /* Paleta „Pod lampą” (v8, 13.11.2026): ciemna sala wieczorem, bursztyn lamp jako akcja.
    Wczytywana po style.css, nadpisuje tokeny w obu trybach (jasnym i ciemnym). */
 :root{
-  --paper:#2E241B;--sheet:#382C21;--ink:#F1E7D4;--muted:#C9BCA2;
-  --green:#1E3A2B;--on-green:#F1E7D4;
-  --gold:#D49A3A;--gold-text:#E6B867;--gold-on-green:#E6B867;
-  --wine:#E3A64A;--wine-hover:#F0BC6A;--on-wine:#17110A;
-  --line:rgba(241,231,212,.14);
+  /* v11 „Heban i jasne złoto” (14.11.2026): jedna rodzina brązu + jeden metal */
+  --paper:#17120E;--sheet:#241F1B;--ink:#EDE9E2;--muted:#AFAAA4;
+  --green:#241F1B;--on-green:#EDE9E2;
+  --gold:#DDBB78;--gold-text:#DDBB78;--gold-on-green:#DDBB78;
+  --wine:#DDBB78;--wine-hover:#E3C995;--on-wine:#17120E;
+  --line:rgba(237,233,226,.12);
   --shadow:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
   --todo-bg:#3D3210;--todo-ink:#F3DC8C;
-  --tint:#E3A64A;--tint-o:.16;
+  --tint:#DDBB78;--tint-o:.12;
   color-scheme:dark;
 }
 
@@ -146,21 +147,21 @@
 /* ---------- Pasek przewijania (v8) ----------
    Ciemna szyna jak sala, suwak w złocie lamp z odstępem od krawędzi.
    Chrome/Edge/Safari: ::-webkit-scrollbar. Firefox: scrollbar-color. */
-html{--sb-track:#0E0C09;--sb-thumb:#8A6526;--sb-thumb-hi:#E6B867}
+html{--sb-track:#110D0A;--sb-thumb:#7E6A45;--sb-thumb-hi:#DDBB78}
 html::-webkit-scrollbar{width:12px;height:12px}
-html::-webkit-scrollbar-track{background:var(--sb-track);border-left:1px solid rgba(212,154,58,.14)}
+html::-webkit-scrollbar-track{background:var(--sb-track);border-left:1px solid rgba(221,187,120,.14)}
 html::-webkit-scrollbar-thumb{
   border:3px solid transparent;border-radius:999px;background-clip:padding-box;
   background-color:var(--sb-thumb);
-  background-image:linear-gradient(180deg,rgba(246,217,160,.55),rgba(212,154,58,.15) 45%,rgba(0,0,0,.25));
-  box-shadow:inset 0 0 0 1px rgba(246,217,160,.18)}
-html::-webkit-scrollbar-thumb:hover{background-color:#B88634;border-width:2px}
+  background-image:linear-gradient(180deg,rgba(240,224,190,.55),rgba(221,187,120,.15) 45%,rgba(0,0,0,.25));
+  box-shadow:inset 0 0 0 1px rgba(240,224,190,.18)}
+html::-webkit-scrollbar-thumb:hover{background-color:#9A8254;border-width:2px}
 html::-webkit-scrollbar-thumb:active{background-color:var(--sb-thumb-hi)}
 html::-webkit-scrollbar-corner{background:var(--sb-track)}
 @supports not selector(::-webkit-scrollbar){
-  html{scrollbar-color:#B88634 var(--sb-track);scrollbar-width:thin}
+  html{scrollbar-color:#9A8254 var(--sb-track);scrollbar-width:thin}
 }
-::selection{background:rgba(227,166,74,.85);color:#17110A}
+::selection{background:rgba(221,187,120,.85);color:#17120E}
 
 /* ---------- Karta na głównej: zapowiedź (v8) ----------
    Pełna karta jest w menu.html. Tu 6 dań, skróty do działów i przycisk. */
@@ -246,16 +247,16 @@ html::-webkit-scrollbar-corner{background:var(--sb-track)}
 @media (max-width:380px){.nav__in{gap:.6rem}.logo{gap:.5rem}.logo b{font-size:1.12rem}.logo svg.gate{width:2.4rem;height:2.4rem}}
 
 /* ---------- Rytm + Orzech + Łuk bramy (v10, 14.11.2026) ----------
-   Ciemne sekcje: orzech #2E241B (zamiast prawie-czerni). Wybrane sekcje są
+   Ciemne sekcje: tokeny z :root (od v11 heban #17120E). Wybrane sekcje są
    jasne (.is-light): kremowy papier, przyciski i ornamenty w ciemnym brązie,
    bo bursztyn na kremie miał kontrast 1,8:1. Sekcja, której tło różni się
    od poprzedniej, ma klasę .cut: zaczyna się płaskim łukiem bramy ze złotą nitką. */
 :where(.sec,.proof){background-color:var(--paper)}
 .is-light{
-  --paper:#EFE6D6;--sheet:#F7F1E6;--ink:#2A2119;--muted:#5E5343;
-  --gold:#9A6420;--gold-text:#8C5A1C;--line:rgba(42,33,25,.15);
-  --wine:#8C5A1C;--wine-hover:#74490F;--on-wine:#FFF8EC;
-  --shadow:0 2px 6px rgba(60,40,10,.08),0 18px 40px rgba(60,40,10,.12);
+  --paper:#F6F2EB;--sheet:#FAF8F4;--ink:#16110D;--muted:#625D58;
+  --gold:#9A8254;--gold-text:#7E6A45;--line:rgba(22,17,13,.13);
+  --wine:#17120E;--wine-hover:#110E0A;--on-wine:#F6F2EB;
+  --shadow:0 2px 6px rgba(40,30,20,.06),0 18px 40px rgba(40,30,20,.10);
   --todo-bg:#F6E7A8;--todo-ink:#4A3A06;
   color-scheme:light;background-color:var(--paper);color:var(--ink);
 }
@@ -263,7 +264,44 @@ html::-webkit-scrollbar-corner{background:var(--sb-track)}
 :root{--arch:clamp(2.25rem,1rem + 4.5vw,5.5rem)}
 .cut{position:relative;z-index:3;margin-top:calc(-1 * var(--arch));
   border-radius:50% 50% 0 0/var(--arch) var(--arch) 0 0;
-  box-shadow:inset 0 1.5px 0 0 color-mix(in srgb,#D49A3A 60%,transparent)}
-.cut.is-light{box-shadow:inset 0 1.5px 0 0 color-mix(in srgb,#9A6420 55%,transparent)}
+  box-shadow:inset 0 1px 0 0 color-mix(in srgb,#DDBB78 45%,transparent)}
+.cut.is-light{box-shadow:inset 0 1px 0 0 color-mix(in srgb,#9A8254 40%,transparent)}
 .cut:is(.season,.res)::before{display:none}
 .res.cut{border-top:0}
+
+/* Ciepła korekta zdjęć (v11): przygasza zieleń roślin i niebieskie LED-y */
+:is(.sign__photo,.gal__ph img,.about__photo img,.lb img,.mhero img){filter:sepia(.22) saturate(.78) contrast(1.04) brightness(.97)}
+body{background:var(--paper)}
+/* Bloczek zamówienia: zamiast czerwieni heban i złoto (czerwień tylko w błędach) */
+.slip .btn{--bg:#17120E;--fg:#F6F2EB;--bd:#17120E}
+.slip .btn::before{background:#3A322A}
+.slip__no,.slip__stub span:first-child{color:#7E6A45}
+.sf:focus-within{border-bottom-color:#7E6A45}
+/* Bloczek: zielony i granatowy „atrament” zamieniony na brązowy (generowane z style.css) */
+.slip{color:#16110D}
+.slip__top{border-bottom:1.5px solid #4A3B2C;color:#4A3B2C}
+.slip__fields{border-bottom:1px solid rgba(74,59,44,.5);color:#4A3B2C}
+.slip__fields>div+div{border-left:1px solid rgba(74,59,44,.5)}
+.slip__fields i{color:#16110D}
+.slip__text{background:repeating-linear-gradient(180deg,transparent 0 calc(1.8rem - 1px),rgba(74,59,44,.2) calc(1.8rem - 1px) 1.8rem) 0 .55rem}
+.slip__sig{border-top:1px dashed rgba(74,59,44,.45);color:#4A3B2C}
+.slip__sig b{color:#16110D}
+.slip__text{background:repeating-linear-gradient(180deg,transparent 0 calc(1.85rem - 1px),rgba(74,59,44,.2) calc(1.85rem - 1px) 1.85rem) 0 .55rem}
+.slip{color:#16110D}
+.slip__wm{color:#4A3B2C}
+.slip__head{color:#4A3B2C;border-bottom:3px double rgba(74,59,44,.75)}
+.slip__fields{border-bottom:1px solid rgba(74,59,44,.55);color:#4A3B2C}
+.slip__fields>div+div{border-left:1px solid rgba(74,59,44,.55)}
+.slip__fields i{color:#2B2219}
+.slip__text{background:repeating-linear-gradient(180deg,transparent 0 calc(1.85rem - 1px),rgba(74,59,44,.2) calc(1.85rem - 1px) 1.85rem) 0 .6rem}
+.slip__sig{border-top:1px solid rgba(74,59,44,.55);color:#4A3B2C}
+.slip__sig b{color:#2B2219}
+.slip__stub{color:#4A3B2C;
+ background:radial-gradient(circle 2.2px,rgba(74,59,44,.45) 98%,transparent) 0 0/9px 5px repeat-x}
+.slip__title{color:#4A3B2C}
+.sf{border-bottom:1px solid rgba(74,59,44,.4)}
+.sf label{color:#4A3B2C}
+.sf input,.sf select,.sf textarea{color:#2B2219}
+.sf textarea{background:repeating-linear-gradient(180deg,transparent 0 calc(1.6rem - 1px),rgba(74,59,44,.2) calc(1.6rem - 1px) 1.6rem)}
+.sf input::placeholder,.sf textarea::placeholder{color:rgba(43,34,25,.4)}
+.slip--form .ok{background:rgba(74,59,44,.08);color:#16110D}
