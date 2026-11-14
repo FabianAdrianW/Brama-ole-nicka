@@ -216,31 +216,31 @@ html::-webkit-scrollbar-corner{background:var(--sb-track)}
    Zdjęcie sali na górze bez zielonej zasłony, krótszy tekst,
    jeden główny przycisk, „Codziennie w karcie” jako pasek. */
 @media (max-width:600px){
-  .hero .sign{padding-top:calc(66vw + .5rem);padding-bottom:4.5rem}
-  .hero .sign__photo{height:72vw;object-position:46% 50%;animation-duration:30s}
-  .hero .sign__shade{background:linear-gradient(180deg,rgba(0,0,0,.08) 0,transparent 22vw,color-mix(in srgb,var(--green) 55%,transparent) 50vw,var(--green) 71vw)}
-  .hero .sign__frame{display:none}
+  .hero:not(.hero--sub) .sign{padding-top:calc(66vw + .5rem);padding-bottom:4.5rem}
+  .hero:not(.hero--sub) .sign__photo{height:72vw;object-position:46% 50%;animation-duration:30s}
+  .hero:not(.hero--sub) .sign__shade{background:linear-gradient(180deg,rgba(0,0,0,.08) 0,transparent 22vw,color-mix(in srgb,var(--green) 55%,transparent) 50vw,var(--green) 71vw)}
+  .hero:not(.hero--sub) .sign__frame{display:none}
   .nav .icon-btn{flex:none}
-  .hero .sign__arch{display:none}
-  .hero .sign .caps{font-size:.72rem;letter-spacing:.2em}
-  .hero .sign h1{font-size:3.4rem;margin:.55rem 0 .7rem}
-  .hero .sign__who{display:none}
-  .hero .sign__lead{font-size:1.08rem;line-height:1.55}
-  .hero .sign__actions{margin-top:1.5rem;flex-direction:column;align-items:stretch;gap:.35rem}
-  .hero .sign__actions .btn{width:100%;justify-content:center}
-  .hero .sign__menu{background:none!important;border-color:transparent!important;color:var(--gold-on-green)!important;min-height:44px}
-  .hero .sign__menu::before{display:none}
-  .hero .sign__menu::after{content:"→";margin-left:.5rem;transition:transform .3s var(--ease)}
-  .hero .sign__grid{gap:1.5rem}
-  .hero .today{display:flex;flex-wrap:wrap;gap:.45rem;padding:0;border:0;border-radius:0;background:none!important;transform:none!important;max-width:none;-webkit-backdrop-filter:none;backdrop-filter:none}
-  .hero .today>.caps,.hero .today>p{display:none}
-  .hero .today__row{flex:none;gap:.5rem;padding:.45rem .8rem;border:1px solid rgba(230,184,103,.4)!important;border-radius:999px;background:rgba(0,0,0,.18)}
-  .hero .today__row span{font-size:.92rem}
-  .hero .today__row b{font-size:.85rem}
-  .hero .info{margin-top:-2.5rem}
-  .hero .info a[href^="tel:"]{display:none}
-  .hero .info>*{padding:1rem 1.25rem}
-  .hero .info strong{font-size:1.05rem}
+  .hero:not(.hero--sub) .sign__arch{display:none}
+  .hero:not(.hero--sub) .sign .caps{font-size:.72rem;letter-spacing:.2em}
+  .hero:not(.hero--sub) .sign h1{font-size:3.4rem;margin:.55rem 0 .7rem}
+  .hero:not(.hero--sub) .sign__who{display:none}
+  .hero:not(.hero--sub) .sign__lead{font-size:1.08rem;line-height:1.55}
+  .hero:not(.hero--sub) .sign__actions{margin-top:1.5rem;flex-direction:column;align-items:stretch;gap:.35rem}
+  .hero:not(.hero--sub) .sign__actions .btn{width:100%;justify-content:center}
+  .hero:not(.hero--sub) .sign__menu{background:none!important;border-color:transparent!important;color:var(--gold-on-green)!important;min-height:44px}
+  .hero:not(.hero--sub) .sign__menu::before{display:none}
+  .hero:not(.hero--sub) .sign__menu::after{content:"→";margin-left:.5rem;transition:transform .3s var(--ease)}
+  .hero:not(.hero--sub) .sign__grid{gap:1.5rem}
+  .hero:not(.hero--sub) .today{display:flex;flex-wrap:wrap;gap:.45rem;padding:0;border:0;border-radius:0;background:none!important;transform:none!important;max-width:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .hero:not(.hero--sub) .today>.caps,.hero:not(.hero--sub) .today>p{display:none}
+  .hero:not(.hero--sub) .today__row{flex:none;gap:.5rem;padding:.45rem .8rem;border:1px solid rgba(230,184,103,.4)!important;border-radius:999px;background:rgba(0,0,0,.18)}
+  .hero:not(.hero--sub) .today__row span{font-size:.92rem}
+  .hero:not(.hero--sub) .today__row b{font-size:.85rem}
+  .hero:not(.hero--sub) .info{margin-top:-2.5rem}
+  .hero:not(.hero--sub) .info a[href^="tel:"]{display:none}
+  .hero:not(.hero--sub) .info>*{padding:1rem 1.25rem}
+  .hero:not(.hero--sub) .info strong{font-size:1.05rem}
   .nb{white-space:nowrap}
 }
 @media (max-width:380px){.nav__in{gap:.6rem}.logo{gap:.5rem}.logo b{font-size:1.12rem}.logo svg.gate{width:2.4rem;height:2.4rem}}
