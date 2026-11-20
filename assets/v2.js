@@ -38,12 +38,14 @@
   const c=navigator.connection||{};
   if(v&&!calm&&!c.saveData&&!/2g/.test(c.effectiveType||'')){
     v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
-    v.src=matchMedia('(max-width:759px)').matches?v.dataset.m:v.dataset.d;v.preload='auto';v.load();
-    v.addEventListener('playing',()=>{v.classList.add('is-on');setTimeout(()=>v.parentElement.classList.add('has-vid'),1700)},{once:true});
+    if(!v.dataset.early){v.src=matchMedia('(max-width:759px)').matches?v.dataset.m:v.dataset.d;v.preload='auto';v.load()}
+    const show=()=>{v.classList.add('is-on');setTimeout(()=>v.parentElement.classList.add('has-vid'),900)};
+    v.addEventListener('playing',show,{once:true});
     const go=()=>v.play().catch(()=>{});
-    /* iOS w trybie niskiego zużycia energii blokuje autoodtwarzanie: start po pierwszym dotknięciu */
+    /* start natychmiast gdy są dane (pod bramą intro, więc bez migania); iOS w trybie oszczędzania: po pierwszym dotknięciu */
+    v.addEventListener('canplay',go,{once:true});
     ['touchstart','pointerdown','click'].forEach(ev=>addEventListener(ev,()=>{if(v.paused)go()},{once:true,passive:true}));
-    setTimeout(go,document.documentElement.classList.contains('intro')?1400:300);
+    if(v.readyState>=3)go();if(!v.paused)show();
     new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?go():v.pause())).observe(v);
   }
 
