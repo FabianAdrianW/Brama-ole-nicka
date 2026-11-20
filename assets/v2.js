@@ -39,7 +39,7 @@
   if(v&&!calm&&!c.saveData&&!/2g/.test(c.effectiveType||'')){
     v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
     v.src=matchMedia('(max-width:759px)').matches?v.dataset.m:v.dataset.d;v.preload='auto';v.load();
-    v.addEventListener('playing',()=>v.classList.add('is-on'),{once:true});
+    v.addEventListener('playing',()=>{v.classList.add('is-on');setTimeout(()=>v.parentElement.classList.add('has-vid'),1700)},{once:true});
     const go=()=>v.play().catch(()=>{});
     /* iOS w trybie niskiego zużycia energii blokuje autoodtwarzanie: start po pierwszym dotknięciu */
     ['touchstart','pointerdown','click'].forEach(ev=>addEventListener(ev,()=>{if(v.paused)go()},{once:true,passive:true}));
