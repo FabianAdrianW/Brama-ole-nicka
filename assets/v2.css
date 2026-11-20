@@ -154,8 +154,8 @@ svg{flex:none}
 .picks{background:var(--card);border-block:1px solid var(--line)}
 .picks__in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,1rem + 5vw,6rem);align-items:start}
 .picks__stage{position:sticky;top:7rem;aspect-ratio:1/1;border-radius:var(--r);overflow:hidden;background:var(--sheet);box-shadow:var(--shadow)}
-.picks__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);clip-path:inset(0 0 0 100%);transition:opacity .01s .9s,transform 1.4s var(--ease),clip-path .9s var(--ease)}
-.picks__stage img.on{opacity:1;transform:none;clip-path:inset(0);z-index:1;transition:opacity 0s,transform 1.4s var(--ease),clip-path .9s var(--ease)}
+.picks__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .7s ease,transform 1.4s var(--ease)}
+.picks__stage img.on{opacity:1;transform:none;z-index:1}
 .picks__list h2{margin-bottom:.8rem}
 .picks__lead{color:var(--muted);margin-bottom:2rem}
 .picks__list ol{list-style:none;margin:0 0 2rem;padding:0;border-top:1px solid var(--line)}
@@ -424,22 +424,25 @@ body[data-page] .nav{background:color-mix(in srgb,var(--bg) 86%,transparent);-we
 .acc__a{position:relative;display:block;height:100%;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--on-ebony);isolation:isolate}
 .acc__a img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.4s var(--ease)}
 .acc__a::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(30,21,15,.88),rgba(30,21,15,.35) 50%,rgba(30,21,15,.1))}
-.acc__t{position:absolute;inset:auto 0 0;padding:1.5rem;display:flex;flex-direction:column;gap:.7rem}
-.acc__t b{font:400 clamp(1.3rem,1rem + 1vw,2rem)/1.1 var(--serif);white-space:nowrap}
-.acc__d,.acc__go{max-width:34ch;opacity:0;transform:translateY(12px);transition:opacity .5s,transform .7s var(--ease)}
+.acc__t{position:absolute;inset:auto 0 0;padding:1.5rem;display:flex;flex-direction:column}
+.acc__t b{display:block;font:400 clamp(1.3rem,1rem + 1vw,2rem)/1.1 var(--serif);white-space:nowrap;transform-origin:0 100%;transform:none;transition:transform .9s var(--ease)}
+.acc__more{display:grid;grid-template-rows:1fr;transition:grid-template-rows .9s var(--ease)}
+.acc__in{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:.7rem;padding-top:.7rem}
+.acc__d,.acc__go{max-width:34ch;opacity:1;transform:none;transition:opacity .5s var(--ease) .35s,transform .7s var(--ease) .35s}
 .acc__d{color:var(--on-ebony-m)}
 .acc__go{display:inline-flex;align-items:center;gap:.5rem;font:700 .74rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l)}
 .acc__go svg{width:1rem;height:1rem;margin-top:-.15rem}
-.acc__it.is-on .acc__d,.acc__it.is-on .acc__go{opacity:1;transform:none;transition-delay:.25s}
-.acc__it:not(.is-on) .acc__t b{writing-mode:vertical-rl;transform:rotate(180deg);align-self:start}
 .acc__it.is-on img{transform:scale(1.04)}
+@media (min-width:861px){
+  .acc__it:not(.is-on) b{transform:translateX(1.15em) rotate(-90deg)}
+  .acc__it:not(.is-on) .acc__more{grid-template-rows:0fr}
+  .acc__it:not(.is-on) .acc__d,.acc__it:not(.is-on) .acc__go{opacity:0;transform:translateY(10px);transition-duration:.25s;transition-delay:0s}
+}
 @media (max-width:860px){
   .acc{flex-direction:column;height:auto}
   .acc__it,.acc__it.is-on{flex:none}
   .acc__a{aspect-ratio:4/3.3}
   .acc__a::before{background:linear-gradient(0deg,rgba(30,21,15,.92),rgba(30,21,15,.6) 55%,rgba(30,21,15,.15))}
-  .acc__d,.acc__go{opacity:1;transform:none}
-  .acc__it:not(.is-on) .acc__t b{writing-mode:horizontal-tb;transform:none}
 }
 
 /* ---------- linia kroków / kalendarz ---------- */

@@ -16,7 +16,10 @@
 
   /* Polecamy: zdjęcie po lewej zmienia się za kursorem */
   const imgs=$$('.picks__stage img'),rows=$$('.pk');
-  const show=k=>{imgs.forEach(i=>i.classList.toggle('on',i.dataset.k===k));rows.forEach(r=>r.classList.toggle('on',r.dataset.k===k))};
+  let want=null;
+  const show=k=>{want=k;rows.forEach(r=>r.classList.toggle('on',r.dataset.k===k));const im=imgs.find(i=>i.dataset.k===k);if(!im)return;
+    const swap=()=>{if(want!==k)return;imgs.forEach(i=>i.classList.toggle('on',i===im))};
+    (im.complete&&im.naturalWidth)?swap():(im.decode?im.decode().then(swap,swap):im.addEventListener('load',swap,{once:true}))};
   rows.forEach(r=>{r.addEventListener('mouseenter',()=>show(r.dataset.k));r.addEventListener('focus',()=>show(r.dataset.k))});
   if(rows.length&&matchMedia('(min-width:861px)').matches)show('0');
 
