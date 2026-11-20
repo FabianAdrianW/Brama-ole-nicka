@@ -65,13 +65,16 @@ svg{flex:none}
 .burger span:first-child{top:1.05rem}.burger span:last-child{top:1.6rem}
 .burger[aria-expanded="true"] span:first-child{transform:translateY(.27rem) rotate(45deg)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-.28rem) rotate(-45deg)}
-.drawer{position:fixed;inset:0;z-index:40;background:var(--bg);padding:6.5rem 1.5rem 2rem;display:flex;flex-direction:column;gap:2rem;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .7s var(--ease),visibility 0s .7s}
-.drawer.is-open{clip-path:inset(0);visibility:visible;transition:clip-path .7s var(--ease)}
+.drawer{position:fixed;inset:0;z-index:40;background:var(--bg);padding:6.5rem 1.5rem 2rem;display:flex;flex-direction:column;gap:2rem;opacity:0;transform:translate3d(0,-1.5rem,0);visibility:hidden;pointer-events:none;transition:opacity .35s ease,transform .45s var(--ease),visibility 0s .45s;will-change:opacity,transform;overscroll-behavior:contain;overflow-y:auto}
+.drawer.is-open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .3s ease,transform .45s var(--ease),visibility 0s}
 .drawer ul{list-style:none;margin:0;padding:0}
-.drawer li{border-bottom:1px solid var(--line);overflow:hidden}
-.drawer li a{display:block;padding:1rem 0;font:400 2rem/1.1 var(--serif);text-decoration:none;transform:translateY(105%);transition:transform .7s var(--ease)}
-.drawer.is-open li a{transform:none}
-.drawer li:nth-child(2) a{transition-delay:.05s}.drawer li:nth-child(3) a{transition-delay:.1s}.drawer li:nth-child(4) a{transition-delay:.15s}.drawer li:nth-child(5) a{transition-delay:.2s}
+.drawer li{border-bottom:1px solid var(--line)}
+.drawer li a{display:block;padding:1rem 0;font:400 2rem/1.1 var(--serif);text-decoration:none;opacity:0;transform:translate3d(0,.8rem,0);transition:opacity .3s ease,transform .45s var(--ease)}
+.drawer.is-open li a{opacity:1;transform:none}
+.drawer.is-open li:nth-child(2) a{transition-delay:.04s}.drawer.is-open li:nth-child(3) a{transition-delay:.08s}.drawer.is-open li:nth-child(4) a{transition-delay:.12s}.drawer.is-open li:nth-child(5) a{transition-delay:.16s}
+.menu-open,.menu-open body{overflow:hidden}
+.menu-open .bar{transform:translateY(150%);opacity:0;pointer-events:none;transition:transform .3s,opacity .2s}
+.burger{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 @media (max-width:980px){.nav__nav{display:none}.burger{display:block}.nav__cta span{display:none}.nav__cta{padding-inline:.85rem}}
 
 /* ---------- hero ---------- */

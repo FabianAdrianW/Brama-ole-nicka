@@ -37,9 +37,12 @@
   const v=document.getElementById('hero-vid');
   const c=navigator.connection||{};
   if(v&&!calm&&!c.saveData&&!/2g/.test(c.effectiveType||'')){
-    v.src=matchMedia('(max-width:759px)').matches?v.dataset.m:v.dataset.d;
+    v.muted=true;v.defaultMuted=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+    v.src=matchMedia('(max-width:759px)').matches?v.dataset.m:v.dataset.d;v.preload='auto';v.load();
     v.addEventListener('playing',()=>v.classList.add('is-on'),{once:true});
     const go=()=>v.play().catch(()=>{});
+    /* iOS w trybie niskiego zużycia energii blokuje autoodtwarzanie: start po pierwszym dotknięciu */
+    ['touchstart','pointerdown','click'].forEach(ev=>addEventListener(ev,()=>{if(v.paused)go()},{once:true,passive:true}));
     setTimeout(go,document.documentElement.classList.contains('intro')?1400:300);
     new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?go():v.pause())).observe(v);
   }
