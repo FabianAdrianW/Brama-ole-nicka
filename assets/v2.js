@@ -46,6 +46,13 @@
     ['loadedmetadata','loadeddata','canplay','canplaythrough'].forEach(ev=>v.addEventListener(ev,()=>{if(v.paused)go()}));
     [200,600,1200,2500].forEach(t=>setTimeout(()=>{if(v.paused&&!document.hidden)go()},t));
     go();
+    /* gdy telefon blokuje autoodtwarzanie wideo (np. tryb oszczędzania energii w iOS): animowany WebP gra zawsze */
+    if(matchMedia('(max-width:759px)').matches)setTimeout(()=>{
+      if(!v.paused||document.hidden)return;
+      const im=new Image();im.className='hero__vid is-on';im.alt='';im.setAttribute('aria-hidden','true');im.decoding='async';
+      im.onload=()=>{v.parentElement.appendChild(im);v.remove();setTimeout(()=>im.parentElement.classList.add('has-vid'),900)};
+      im.src='img/v2/hero-m-anim.webp';
+    },1200);
     ['touchstart','pointerdown','click'].forEach(ev=>addEventListener(ev,()=>{if(v.paused)go()},{once:true,passive:true}));
     if(v.readyState>=3)go();if(!v.paused)show();
     new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?go():v.pause())).observe(v);
