@@ -34,8 +34,17 @@
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Gdzie jest wejście do restauracji?", "acceptedAnswer": {"@type": "Answer", "text": "Lwowska 31 w Oleśnicy, parter budynku Oleśnickiego Centrum Biznesu Feniks. Wejście jest z tyłu budynku, od ulicy go nie widać. Jeśli się zgubisz, zadzwoń: 798 101 270."}}, {"@type": "Question", "name": "Czy trzeba rezerwować stolik?", "acceptedAnswer": {"@type": "Answer", "text": "W tygodniu zwykle nie. W niedzielę po południu sala bywa pełna, więc warto zadzwonić wcześniej albo wysłać rezerwację przez formularz."}}, {"@type": "Question", "name": "Czy zupa jest w cenie obiadu?", "acceptedAnswer": {"@type": "Answer", "text": "Tak, do dań mięsnych z karty podajemy zupę gratis. Zupę dnia można też zamówić osobno za 16 zł."}}, {"@type": "Question", "name": "Czy można przyjść z dziećmi?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Mamy kącik zabaw i sztućce dla dzieci."}}, {"@type": "Question", "name": "Czy w menu są oznaczone alergeny?", "acceptedAnswer": {"@type": "Answer", "text": "Tak, cyfry przy nazwach dań w karcie oznaczają alergeny. Jeśli masz alergię, powiedz o niej przy zamówieniu."}}, {"@type": "Question", "name": "Czy mogę zamówić obiad na wynos?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Zamów przez telefon i odbierz w restauracji."}}]}</script>
 <link rel="stylesheet" href="assets/v2.css">
+<script>try{if(!sessionStorage.getItem("bo-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("intro");sessionStorage.setItem("bo-intro","1")}}catch(e){}</script>
 </head>
 <body>
+<div class="gate" id="gate" aria-hidden="true">
+  <span class="gate__l"></span><span class="gate__r"></span>
+  <div class="gate__mark">
+    <svg viewBox="0 0 120 130"><path pathLength="1" d="M10 128V60a50 50 0 0 1 100 0v68"/><path pathLength="1" d="M24 128V62a36 36 0 0 1 72 0v66M60 26v102M2 128h116"/></svg>
+    <b>Brama Oleśnicka</b>
+  </div>
+  <button class="gate__skip" type="button" tabindex="-1">Pomiń</button>
+</div>
 <a class="skip" href="#main">Przejdź do treści</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -92,6 +101,7 @@
     <source media="(max-width:759px)" srcset="img/v2/hero-m.webp">
     <img src="img/v2/hero.webp" width="1376" height="768" alt="Stół z obiadem: waza rosołu z makaronem, kotlety schabowe, pierogi z cebulką, ziemniaki z koperkiem i surówka" fetchpriority="high">
   </picture>
+  <video class="hero__vid" id="hero-vid" muted loop playsinline preload="none" aria-hidden="true" data-d="img/v2/hero.mp4" data-m="img/v2/hero-m.mp4"></video>
   <div class="wrap hero__in">
     <h1 id="h1" class="hero__h"><span class="ln"><span>Obiad jak w domu,</span></span> <span class="ln"><span><i>przy Lwowskiej&nbsp;31</i></span></span></h1>
     <p class="hero__lead rise" style="--d:.35s">Rodzinna restauracja w Oleśnicy. Rosół na mięsie, schabowy z sosem grzybowym, pierogi z gęsiną i surówki robione na miejscu. Do dań mięsnych zupa gratis.</p>

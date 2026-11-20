@@ -9,7 +9,9 @@ Paleta C wybrana z czterech jasnych (A Len i miód, B Bolesławiecka porcelana, 
 - **Zdjęcia dań i kuchni** wygenerowane w Google Flow, `img/v2/*.webp`, og:image `img/v2/og.jpg`. Pod daniami i w stopce: „Zdjęcia dań mają charakter poglądowy”. Wnętrze tylko z prawdziwych zdjęć.
 - **Bez etykiet nad nagłówkami.** Akcent to kursywa w złocie w h2.
 - **Ruch:** linie h1 wjeżdżają spod maski, zdjęcie hero wyostrza się; przyciski z wjeżdżającym tłem; kafle: zoom i podpis; Polecamy: zdjęcie odsłaniane clip-path; opinie w pętli (pauza na hover), liczniki, gwiazdki; panele okazji: zoom; galeria: podpis na hover; menu mobilne odsłaniane od góry. `prefers-reduced-motion` wyłącza.
-- **Podstrony** (Karta, Przyjęcia, Catering) mają te same tokeny w `pod-lampa.css`, ale stary układ (do przebudowy).
+- **Intro bramy** (tylko index, raz na sesję, `sessionStorage bo-intro`): złoty łuk rysuje się na kości słoniowej, skrzydła rozjeżdżają się na boki (~2,4 s), potem wjeżdża nagłówek. Klik lub klawisz pomija. Wyłączone przy `prefers-reduced-motion`.
+- **Film w hero:** `img/v2/hero.mp4` (16:9) i `hero-m.mp4` (9:16), z Google Flow, ok. 1,1 MB; wczytywany przez JS, nie przy oszczędzaniu danych/2G/ograniczeniu ruchu; zdjęcie zostaje pod spodem.
+- **Podstrony** generowane jednym szablonem (nawigacja, stopka, pasek telefonu jak na index): nagłówek z tekstem i zdjęciem w łuku. Przyjęcia: akordeon 5 okazji ze zdjęciami (hover rozszerza panel, klik wypełnia formularz), 4 kroki na złotej linii, „Co warto wiedzieć”, opinie na hebanie, formularz. Catering: 4 oferty naprzemiennie zdjęcie/tekst, świąteczna garmażerka ze zdjęciem i cennikiem, kalendarz roku, formularz. Karta: nowy nagłówek ze zdjęciem stołu z góry, treść i JS karty bez zmian (`menu.css`, `menu.js`). `style.css`, `pod-lampa.css`, `palety.css` nie są już wczytywane.
 
 | Token (v2.css) | Wartość | Rola |
 |---|---|---|

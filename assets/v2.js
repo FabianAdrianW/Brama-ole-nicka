@@ -20,7 +20,31 @@
   rows.forEach(r=>{r.addEventListener('mouseenter',()=>show(r.dataset.k));r.addEventListener('focus',()=>show(r.dataset.k))});
   if(rows.length&&matchMedia('(min-width:861px)').matches)show('0');
 
+  /* intro: brama */
+  const gate=document.getElementById('gate');
+  if(gate&&document.documentElement.classList.contains('intro')){
+    const done=()=>{gate.remove();document.documentElement.classList.remove('intro')};
+    const skip=()=>{gate.classList.add('is-skip');setTimeout(done,700)};
+    gate.addEventListener('click',skip);addEventListener('keydown',skip,{once:true});
+    setTimeout(done,2700);
+  }else if(gate){gate.remove()}
+
+  /* hero: film w tle (nie przy oszczędzaniu danych i ograniczeniu ruchu) */
+  const v=document.getElementById('hero-vid');
+  const c=navigator.connection||{};
+  if(v&&!calm&&!c.saveData&&!/2g/.test(c.effectiveType||'')){
+    v.src=matchMedia('(max-width:759px)').matches?v.dataset.m:v.dataset.d;
+    v.addEventListener('playing',()=>v.classList.add('is-on'),{once:true});
+    const go=()=>v.play().catch(()=>{});
+    setTimeout(go,document.documentElement.classList.contains('intro')?1400:300);
+    new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?go():v.pause())).observe(v);
+  }
+
+  /* przyjęcia: akordeon okazji */
+  const acc=$$('.acc__it');
+  acc.forEach(it=>{const on=()=>acc.forEach(x=>x.classList.toggle('is-on',x===it));it.addEventListener('mouseenter',on);it.addEventListener('focusin',on)});
+
   /* pojawianie się bloków */
   const rv=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -5% 0px'});
-  $$('.tiles li,.about__ph .ap,.occ__grid .panel,.price,.gal li,.find').forEach((el,i)=>{el.setAttribute('data-reveal','');el.style.transitionDelay=(i%6)*70+'ms';rv.observe(el)});
+  $$('.tiles li,.about__ph .ap,.occ__grid .panel,.price,.gal li,.find,.offer,.facts__dl,.quotes__list li,.line4').forEach((el,i)=>{el.setAttribute('data-reveal','');el.style.transitionDelay=(i%6)*70+'ms';rv.observe(el)});
 })();
