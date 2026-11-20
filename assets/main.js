@@ -7,15 +7,20 @@
   /* wskaźnik w nawigacji */
   const links=$$('#links a'),ind=$('.links__bar');let cur=null;
   const move=a=>{if(!ind)return;if(!a){ind.style.setProperty('--s',0);return}ind.style.setProperty('--x',a.offsetLeft+14+'px');ind.style.setProperty('--s',(a.offsetWidth-28)/100)};
-  const mark=a=>{cur=a||null;links.forEach(l=>l.removeAttribute('aria-current'));cur&&cur.setAttribute('aria-current','true');move(cur)};
+  let hov=null,lock=0;
+  const mark=a=>{if(Date.now()<lock)return;cur=a||null;links.forEach(l=>l.removeAttribute('aria-current'));cur&&cur.setAttribute('aria-current','true');if(!hov)move(cur)};
   const page=document.body.dataset.page;
   if(page){mark(links.find(l=>l.dataset.page===page))}
   else{
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)mark(links.find(l=>l.hash==='#'+e.target.id&&l.getAttribute('href').startsWith('#')))}),{rootMargin:'-45% 0px -50% 0px'});
     $$('main > section[id]').forEach(s=>io.observe(s));
   }
-  links.forEach(l=>{l.addEventListener('mouseenter',()=>move(l));l.addEventListener('focus',()=>move(l))});
-  $('#links')&&$('#links').addEventListener('mouseleave',()=>move(cur));
+  links.forEach(l=>{
+    l.addEventListener('mouseenter',()=>{hov=l;move(l)});l.addEventListener('focus',()=>move(l));
+    /* klik w kotwicę: kreska zostaje pod klikniętym linkiem, aż strona dojedzie */
+    l.addEventListener('click',()=>{if(l.getAttribute('href').includes('#')&&!l.dataset.page){mark(l);lock=Date.now()+1400}});
+  });
+  $('#links')&&$('#links').addEventListener('mouseleave',()=>{hov=null;move(cur)});
   addEventListener('resize',()=>move(cur));addEventListener('load',()=>move(cur));
 
   /* zakładki menu */
