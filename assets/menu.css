@@ -68,7 +68,7 @@
 .mi__p small{font-size:.72rem;font-weight:600;color:var(--muted)}
 .mi__d{margin:.3rem 0 0;font:400 .95rem/1.5 var(--f-sans);color:var(--muted);max-width:36rem}
 .mi__tag{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;font:700 .62rem var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--on-wine);background:var(--gold);padding:.28rem .6rem .22rem;border-radius:999px}
-.mi.is-rec .mi__n{color:#F6E3BD}
+.mi.is-rec .mi__n{color:var(--ink);font-style:italic}
 @media (hover:hover){
   .mi:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
   .mi:hover .mi__dots{border-bottom-color:var(--gold)}

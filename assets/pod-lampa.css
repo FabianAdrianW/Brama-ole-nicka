@@ -2,15 +2,16 @@
    Wczytywana po style.css, nadpisuje tokeny w obu trybach (jasnym i ciemnym). */
 :root{
   /* v11 „Heban i jasne złoto” (14.11.2026): jedna rodzina brązu + jeden metal */
-  --paper:#17120E;--sheet:#241F1B;--ink:#EDE9E2;--muted:#AFAAA4;
-  --green:#241F1B;--on-green:#EDE9E2;
-  --gold:#DDBB78;--gold-text:#DDBB78;--gold-on-green:#DDBB78;
-  --wine:#DDBB78;--wine-hover:#E3C995;--on-wine:#17120E;
-  --line:rgba(237,233,226,.12);
-  --shadow:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
-  --todo-bg:#3D3210;--todo-ink:#F3DC8C;
-  --tint:#DDBB78;--tint-o:.12;
-  color-scheme:dark;
+  /* v13 „Jasny heban” (20.11.2026): kość słoniowa, heban, złoto — jak index (assets/v2.css) */
+  --paper:#F7F1E6;--sheet:#FBF7F0;--ink:#2B1E16;--muted:#6E5D4E;
+  --green:#2B1E16;--on-green:#F3EADB;
+  --gold:#8A6A2E;--gold-text:#8A6A2E;--gold-on-green:#E9D3A0;
+  --wine:#2B1E16;--wine-hover:#3A2A1F;--on-wine:#F3EADB;
+  --line:rgba(43,30,22,.14);
+  --shadow:0 1px 2px rgba(43,30,22,.06),0 14px 34px -12px rgba(43,30,22,.22);
+  --todo-bg:#F3E2A8;--todo-ink:#4A3610;
+  --tint:#E9D3A0;--tint-o:.10;
+  color-scheme:light;
 }
 
 /* ---------- Zdjęcia sali (v8) ---------- */

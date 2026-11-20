@@ -3,6 +3,25 @@
 ## Cel
 Strona wizytówka restauracji z podstronami. Konwersje: rezerwacja stolika (główna), zapytanie o przyjęcie (przyjecia.html), zapytanie o catering (catering.html); zawsze też telefon 798 101 270.
 
+## v13 (20.11.2026): pełny redesign, jasna paleta „Jasny heban”
+Paleta C wybrana z czterech jasnych (A Len i miód, B Bolesławiecka porcelana, C Jasny heban, D Ogród i burak). Układ wzorowany na Pho Viet (fabianadrianw.github.io/pho_viet).
+- **Strona główna** ma własny arkusz `assets/v2.css` + `assets/v2.js` (bez style.css i pod-lampa.css). Kolejność: hero na całą szerokość ze zdjęciem stołu (na telefonie zdjęcie 9:16 nad tekstem) i trzema liczbami → pasek adresu → 6 kafli działów karty → Polecamy (lista 6 dań, zdjęcie po lewej zmienia się za kursorem, na telefonie miniatury) → opinie na hebanowym pasie → O nas (3 zdjęcia kuchni) → Przyjęcia i Catering jako dwa panele ze zdjęciem → Święta (cennik garmażerki) → Galeria (prawdziwe zdjęcia sali) → FAQ → Rezerwacja i dojazd → stopka hebanowa.
+- **Zdjęcia dań i kuchni** wygenerowane w Google Flow, `img/v2/*.webp`, og:image `img/v2/og.jpg`. Pod daniami i w stopce: „Zdjęcia dań mają charakter poglądowy”. Wnętrze tylko z prawdziwych zdjęć.
+- **Bez etykiet nad nagłówkami.** Akcent to kursywa w złocie w h2.
+- **Ruch:** linie h1 wjeżdżają spod maski, zdjęcie hero wyostrza się; przyciski z wjeżdżającym tłem; kafle: zoom i podpis; Polecamy: zdjęcie odsłaniane clip-path; opinie w pętli (pauza na hover), liczniki, gwiazdki; panele okazji: zoom; galeria: podpis na hover; menu mobilne odsłaniane od góry. `prefers-reduced-motion` wyłącza.
+- **Podstrony** (Karta, Przyjęcia, Catering) mają te same tokeny w `pod-lampa.css`, ale stary układ (do przebudowy).
+
+| Token (v2.css) | Wartość | Rola |
+|---|---|---|
+| --bg | #F7F1E6 | tło |
+| --sheet | #EFE6D6 | sekcje przyciemnione |
+| --card | #FBF7F0 | karty, pasy |
+| --ink / --ebony | #2B1E16 | tekst, przyciski, pas opinii, stopka |
+| --muted | #6E5D4E | opisy (5,6:1) |
+| --gold | #8A6A2E | ceny, kursywa w h2 (4,5:1) |
+| --gold-l | #E9D3A0 | akcent na hebanie, hover przycisku |
+| --on-ebony | #F3EADB | tekst na hebanie |
+
 ## v9 (14.11.2026): karta na osobnej podstronie, hero na telefonie
 Powód: na telefonie karta zajmowała ok. 5400 px (prawie 7 ekranów), hero było mało zapraszające. Strona główna na telefonie skróciła się z ok. 16 300 do 12 100 px.
 - **menu.html (nowa):** nagłówek ze zdjęciem stołu w łuku, „Karta”, pigułki „Zupa dnia 16 zł / Deser dnia 21 zł / zupa gratis”. 8 kategorii (Zupy, Dania mięsne, Pierogi, Jarskie i ryby, Sałatki, Dodatki i surówki, Desery i kawa, Napoje), 52 pozycje.
