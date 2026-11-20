@@ -35,6 +35,8 @@
   const bur=$('#burger'),dr=$('#drawer');
   if(bur&&dr){
     const set=o=>{bur.setAttribute('aria-expanded',o);bur.setAttribute('aria-label',o?'Zamknij menu':'Otwórz menu');dr.classList.toggle('is-open',o);document.documentElement.classList.toggle('menu-open',o);if(o&&matchMedia('(hover:hover)').matches)dr.querySelector('a').focus({preventScroll:true})};
+    const scrim=document.createElement('div');scrim.className='scrim';scrim.setAttribute('aria-hidden','true');document.body.appendChild(scrim);
+    scrim.addEventListener('click',()=>set(false));
     bur.addEventListener('click',()=>set(bur.getAttribute('aria-expanded')!=='true'));
     dr.addEventListener('click',e=>{if(e.target.closest('a'))set(false)});
     document.addEventListener('keydown',e=>{if(!dr.classList.contains('is-open'))return;if(e.key==='Escape'){set(false);bur.focus()}
