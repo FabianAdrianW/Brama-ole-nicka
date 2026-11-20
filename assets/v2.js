@@ -20,7 +20,8 @@
   const show=k=>{want=k;rows.forEach(r=>r.classList.toggle('on',r.dataset.k===k));const im=imgs.find(i=>i.dataset.k===k);if(!im)return;
     const swap=()=>{if(want!==k)return;imgs.forEach(i=>i.classList.toggle('on',i===im))};
     (im.complete&&im.naturalWidth)?swap():(im.decode?im.decode().then(swap,swap):im.addEventListener('load',swap,{once:true}))};
-  rows.forEach(r=>{r.addEventListener('mouseenter',()=>show(r.dataset.k));r.addEventListener('focus',()=>show(r.dataset.k))});
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(fine)rows.forEach(r=>{r.addEventListener('mouseenter',()=>show(r.dataset.k));r.addEventListener('focus',()=>show(r.dataset.k))});
   if(rows.length&&matchMedia('(min-width:861px)').matches)show('0');
 
   /* intro: brama */
@@ -28,7 +29,7 @@
   if(gate&&document.documentElement.classList.contains('intro')){
     const done=()=>{gate.remove();document.documentElement.classList.remove('intro')};
     const skip=()=>{gate.classList.add('is-skip');setTimeout(done,700)};
-    gate.addEventListener('click',skip);addEventListener('keydown',skip,{once:true});
+    addEventListener('pointerdown',skip,{once:true});addEventListener('keydown',skip,{once:true});
     setTimeout(done,2700);
   }else if(gate){gate.remove()}
 
@@ -45,7 +46,7 @@
 
   /* przyjęcia: akordeon okazji */
   const acc=$$('.acc__it');
-  acc.forEach(it=>{const on=()=>acc.forEach(x=>x.classList.toggle('is-on',x===it));it.addEventListener('mouseenter',on);it.addEventListener('focusin',on)});
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches)acc.forEach(it=>{const on=()=>acc.forEach(x=>x.classList.toggle('is-on',x===it));it.addEventListener('mouseenter',on);it.addEventListener('focusin',on)});
 
   /* pojawianie się bloków */
   const rv=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -5% 0px'});

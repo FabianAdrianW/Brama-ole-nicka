@@ -16,7 +16,7 @@
     $$('main > section[id]').forEach(s=>io.observe(s));
   }
   links.forEach(l=>{
-    l.addEventListener('mouseenter',()=>{hov=l;move(l)});l.addEventListener('focus',()=>move(l));
+    if(matchMedia('(hover:hover)').matches)l.addEventListener('mouseenter',()=>{hov=l;move(l)});l.addEventListener('focus',()=>move(l));
     /* klik w kotwicę: kreska zostaje pod klikniętym linkiem, aż strona dojedzie */
     l.addEventListener('click',()=>{if(l.getAttribute('href').includes('#')&&!l.dataset.page){mark(l);lock=Date.now()+1400}});
   });
