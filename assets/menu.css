@@ -49,9 +49,9 @@
 .mp__no small{color:var(--muted);margin-left:.35rem;font-size:inherit}
 .mp__head h2{grid-area:h;font-size:clamp(2.1rem,1.6rem + 2vw,2.8rem);font-style:italic;font-weight:500;margin:0;line-height:1.05}
 .mp__count{grid-area:count;justify-self:end;font:600 .68rem var(--f-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.mp__gratis{display:flex;gap:.75rem;align-items:flex-start;margin:1rem 0 .4rem;padding:.85rem 1rem;background:color-mix(in srgb,var(--green) 70%,transparent);border-left:2px solid var(--gold);font-size:.98rem}
-.mp__gratis svg{flex:none;width:1.4rem;height:1.4rem;color:var(--gold-on-green);margin-top:.1rem}
-.mp__gratis b{color:var(--gold-on-green);font-weight:600}
+.mp__gratis{display:flex;gap:.75rem;align-items:flex-start;margin:1rem 0 .4rem;padding:.9rem 1.1rem;background:color-mix(in srgb,var(--gold-l) 38%,var(--card,#FBF7F0));border:1px solid color-mix(in srgb,var(--gold) 30%,transparent);border-radius:var(--r,4px);color:var(--ink);font-size:.98rem}
+.mp__gratis svg{flex:none;width:1.4rem;height:1.4rem;color:var(--gold);margin-top:.1rem}
+.mp__gratis b{color:var(--gold);font-weight:700}
 .mp__note{margin:.75rem 0 .2rem;color:var(--muted);font:italic 400 1rem var(--f-serif)}
 .mg+.mg{margin-top:1.4rem}
 .mg__h{display:flex;align-items:center;gap:.8rem;margin:1.1rem 0 .1rem;font:italic 500 1.35rem var(--f-serif);color:var(--gold-text)}
@@ -67,7 +67,7 @@
 .mi__p{font:700 1.08rem var(--f-sans);color:var(--gold-text);white-space:nowrap;font-variant-numeric:tabular-nums;transition:color .3s}
 .mi__p small{font-size:.72rem;font-weight:600;color:var(--muted)}
 .mi__d{margin:.3rem 0 0;font:400 .95rem/1.5 var(--f-sans);color:var(--muted);max-width:36rem}
-.mi__tag{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;font:700 .62rem var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--on-wine);background:var(--gold);padding:.28rem .6rem .22rem;border-radius:999px}
+.mi__tag{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;font:700 .62rem var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:#FFF8EC;background:var(--gold);padding:.28rem .6rem .22rem;border-radius:999px}
 .mi.is-rec .mi__n{color:var(--ink);font-style:italic}
 @media (hover:hover){
   .mi:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
