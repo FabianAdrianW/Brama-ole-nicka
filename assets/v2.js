@@ -43,7 +43,9 @@
     v.addEventListener('playing',show,{once:true});
     const go=()=>v.play().catch(()=>{});
     /* start natychmiast gdy są dane (pod bramą intro, więc bez migania); iOS w trybie oszczędzania: po pierwszym dotknięciu */
-    v.addEventListener('canplay',go,{once:true});
+    ['loadedmetadata','loadeddata','canplay','canplaythrough'].forEach(ev=>v.addEventListener(ev,()=>{if(v.paused)go()}));
+    [200,600,1200,2500].forEach(t=>setTimeout(()=>{if(v.paused&&!document.hidden)go()},t));
+    go();
     ['touchstart','pointerdown','click'].forEach(ev=>addEventListener(ev,()=>{if(v.paused)go()},{once:true,passive:true}));
     if(v.readyState>=3)go();if(!v.paused)show();
     new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?go():v.pause())).observe(v);
